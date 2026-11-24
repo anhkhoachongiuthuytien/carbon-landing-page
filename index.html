@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="obsidian">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KRONOS · C6 — Xưởng Chế Tác Siêu Vật Liệu Carbon & Đồng Hồ Tourbillon Nguyên Tử</title>
+  <meta name="description" content="Trải nghiệm KRONOS · C6: tuyệt tác cơ khí từ 72 lớp Carbon rèn NTPT, màng cộng hưởng Graphene 2D, tinh thể kim cương sp³ và lồng Tourbillon ba trục tương tác thời gian thực." />
+  <meta name="theme-color" content="#09090b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Top Scroll Progress & Velocity Bar -->
+  <div class="scroll-progress-track" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+  </div>
+
+  <!-- Atomic Ignition Preloader Shutter -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-shutter preloader-shutter-top"></div>
+    <div class="preloader-shutter preloader-shutter-bottom"></div>
+    <div class="preloader-core">
+      <div class="periodic-tile">
+        <div class="periodic-row">
+          <span>06</span>
+          <span>1s² 2s² 2p²</span>
+        </div>
+        <div class="periodic-symbol">C</div>
+        <div class="periodic-mass">12.011 AMU</div>
+      </div>
+      <div class="preloader-telemetry">
+        <span class="preloader-status" id="preloader-status">KHỞI TẠO MẠNG TINH THỂ CARBON...</span>
+        <span class="preloader-percent" id="preloader-percent">000%</span>
+      </div>
+      <div class="preloader-bar-wrap">
+        <div class="preloader-bar-fill" id="preloader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Spring & Velocity-Stretch Magnetic Cursor -->
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true">
+    <span class="cursor-label" id="cursor-label"></span>
+  </div>
+
+  <!-- Subtle Architectural Grain Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Floating Command Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#allotrope-hero" class="brand" data-magnetic data-cursor="ĐẦU TRANG">
+        <span class="brand-hex" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" stroke="currentColor" stroke-width="1.5" />
+            <polygon points="16,8 23,12 23,20 16,24 9,20 9,12" stroke="currentColor" stroke-width="1" opacity="0.55" />
+            <circle cx="16" cy="16" r="2.5" fill="currentColor" />
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-title">KRONOS<strong>·C6</strong></span>
+          <span class="brand-sub">ATELIER NGUYÊN TỬ</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Điều hướng chính">
+        <a href="#allotrope-hero" class="nav-link active" data-section="allotrope-hero">Thù hình 3D</a>
+        <a href="#pressure-journey" class="nav-link" data-section="pressure-journey">Áp suất 12 GPa</a>
+        <a href="#graphene-lab" class="nav-link" data-section="graphene-lab">Màng Graphene</a>
+        <a href="#exploded-calibre" class="nav-link" data-section="exploded-calibre">Giải phẫu 5 lớp</a>
+        <a href="#xray-loupe-section" class="nav-link" data-section="xray-loupe-section">Soi X-Ray</a>
+        <a href="#chrono-bench" class="nav-link" data-section="chrono-bench">Dao động kế</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="pill-control" id="theme-toggle" aria-label="Chuyển đổi giao diện Sáng / Tối" data-magnetic data-cursor="GIAO DIỆN">
+          <span class="theme-dot" aria-hidden="true"></span>
+          <span id="theme-label">Carbon Đen</span>
+        </button>
+
+        <button type="button" class="pill-control" id="audio-toggle" aria-pressed="false" aria-label="Bật hoặc tắt âm thanh cơ học" data-magnetic data-cursor="ÂM CƠ HỌC">
+          <span class="eq-icon" id="eq-icon" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </span>
+          <span id="audio-label">Âm cơ khí</span>
+        </button>
+
+        <a href="#bespoke-forge" class="btn btn-primary btn-sm" data-magnetic data-cursor="CHẾ TÁC">
+          <span>Khắc Độc Bản</span>
+        </a>
+
+        <button type="button" class="mobile-toggle" id="mobile-toggle" aria-label="Mở trình đơn" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#allotrope-hero" class="mobile-link">Thù hình 3D</a>
+      <a href="#pressure-journey" class="mobile-link">Hành trình 12 GPa</a>
+      <a href="#graphene-lab" class="mobile-link">Phòng thí nghiệm Graphene</a>
+      <a href="#exploded-calibre" class="mobile-link">Giải phẫu cơ khí 5 lớp</a>
+      <a href="#xray-loupe-section" class="mobile-link">Thấu kính X-Ray 10x</a>
+      <a href="#chrono-bench" class="mobile-link">Bàn đo dao động</a>
+      <a href="#bespoke-forge" class="mobile-link highlight">Khắc Độc Bản (60 chiếc)</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================
+         SECTION 1: HERO & LIVE 3D ATOMIC ALLOTROPE / TOURBILLON
+         ========================================================= -->
+    <section class="hero section" id="allotrope-hero">
+      <div class="hero-ambient-glow" aria-hidden="true"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow reveal-up">
+            <span class="status-led"></span>
+            <span>NGUYÊN TỐ SỐ 06 · 12.011 AMU · CALIBRE C6-TOURBILLON</span>
+          </div>
+
+          <h1 class="hero-heading">
+            <span class="mask-line"><span class="mask-inner">Từ bụi sao nguyên tử.</span></span>
+            <span class="mask-line"><span class="mask-inner">Đến tuyệt tác <em>vĩnh cửu.</em></span></span>
+          </h1>
+
+          <p class="hero-lead reveal-up">
+            Chế tác từ <strong>72 lớp sợi Carbon rèn NTPT</strong>, màng cộng hưởng Graphene dày một nguyên tử và mặt kính tinh thể Kim cương CVD — nơi cấu trúc liên kết đồng hóa trị bảo vệ lồng Tourbillon ba trục với độ chính xác tuyệt đối <strong>±0.04 giây/ngày</strong>.
+          </p>
+
+          <div class="hero-cta-group reveal-up">
+            <a href="#graphene-lab" class="btn btn-primary btn-lg" data-magnetic data-cursor="THỬ NGHIỆM">
+              <span class="btn-sheen" aria-hidden="true"></span>
+              <span>Chạm vào Màng Graphene</span>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M3.75 9h10.5M9.75 4.5L14.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#exploded-calibre" class="btn btn-outline btn-lg" data-magnetic data-cursor="GIẢI PHẪU">
+              <span>Giải phẫu Bộ máy 5 Lớp</span>
+            </a>
+          </div>
+
+          <div class="hero-stats reveal-up">
+            <div class="stat-block">
+              <div class="stat-number"><span data-count="72">0</span><small>lớp</small></div>
+              <div class="stat-caption">Sợi Carbon NTPT siêu nhẹ (32g)</div>
+            </div>
+            <div class="stat-sep" aria-hidden="true"></div>
+            <div class="stat-block">
+              <div class="stat-number"><span data-count="3550">0</span><small>°C</small></div>
+              <div class="stat-caption">Ngưỡng thăng hoa nhiệt học</div>
+            </div>
+            <div class="stat-sep" aria-hidden="true"></div>
+            <div class="stat-block">
+              <div class="stat-number">±<span data-count="0.04" data-decimals="2">0.00</span><small>s</small></div>
+              <div class="stat-caption">Sai số Chronometer / ngày</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive 3D Allotrope & Tourbillon Stage -->
+        <div class="hero-stage-card reveal-scale">
+          <div class="stage-hud stage-hud-top">
+            <div class="hud-chip">
+              <span class="hud-dot"></span>
+              <span id="hero-lattice-title">C₆₀ BUCKMINSTERFULLERENE</span>
+            </div>
+            <div class="hud-mono" id="hero-bond-telemetry">LAI HÓA sp² · 60 NÚT · 90 LIÊN KẾT</div>
+          </div>
+
+          <div class="hero-canvas-wrap" data-cursor="KÉO XOAY 3D">
+            <canvas id="hero-3d-canvas" aria-label="Mô hình 3D tương tác cấu trúc nguyên tử Carbon và lồng Tourbillon"></canvas>
+            <div class="stage-drag-hint" id="stage-drag-hint">
+              <span>↻ Kéo chuột để xoay quỹ đạo 3D · Cuộn/Bấm để đổi thù hình</span>
+            </div>
+          </div>
+
+          <div class="stage-hud stage-hud-bottom">
+            <div class="allotrope-dock" role="tablist" aria-label="Chọn cấu trúc thù hình Carbon">
+              <button type="button" class="dock-btn active" data-mode="fullerene" role="tab" aria-selected="true" data-magnetic>
+                <span class="dock-code">C₆₀</span>
+                <span>Fullerene</span>
+              </button>
+              <button type="button" class="dock-btn" data-mode="diamond" role="tab" aria-selected="false" data-magnetic>
+                <span class="dock-code">sp³</span>
+                <span>Kim Cương</span>
+              </button>
+              <button type="button" class="dock-btn" data-mode="graphene" role="tab" aria-selected="false" data-magnetic>
+                <span class="dock-code">2D</span>
+                <span>Graphene</span>
+              </button>
+              <button type="button" class="dock-btn" data-mode="nanotube" role="tab" aria-selected="false" data-magnetic>
+                <span class="dock-code">CNT</span>
+                <span>Ống Nano</span>
+              </button>
+            </div>
+
+            <button type="button" class="pulse-trigger-btn" id="hero-pulse-btn" data-magnetic data-cursor="KÍCH XUNG">
+              <span>⚡ Xung Nhiệt</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VELOCITY-SENSITIVE KINETIC TELEMETRY MARQUEE
+         ========================================================= -->
+    <div class="marquee-band" aria-hidden="true">
+      <div class="marquee-track" id="marquee-track-1">
+        <div class="marquee-group">
+          <span>ATOMIC NUMBER 06</span><i class="hex-sep">◆</i>
+          <span>72-LAYER FORGED NTPT CARBON</span><i class="hex-sep">◆</i>
+          <span>TRI-AXIAL GRAPHENE TOURBILLON</span><i class="hex-sep">◆</i>
+          <span>CVD DIAMOND CRYSTAL 10 MOHS</span><i class="hex-sep">◆</i>
+          <span>28,800 VPH ESCAPEMENT</span><i class="hex-sep">◆</i>
+          <span>SUBLIMATION POINT 3,550°C</span><i class="hex-sep">◆</i>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span>ATOMIC NUMBER 06</span><i class="hex-sep">◆</i>
+          <span>72-LAYER FORGED NTPT CARBON</span><i class="hex-sep">◆</i>
+          <span>TRI-AXIAL GRAPHENE TOURBILLON</span><i class="hex-sep">◆</i>
+          <span>CVD DIAMOND CRYSTAL 10 MOHS</span><i class="hex-sep">◆</i>
+          <span>28,800 VPH ESCAPEMENT</span><i class="hex-sep">◆</i>
+          <span>SUBLIMATION POINT 3,550°C</span><i class="hex-sep">◆</i>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         SECTION 2: STICKY SCROLLYTELLING — 12 GPa PHASE JOURNEY
+         ========================================================= -->
+    <section class="pressure-outer" id="pressure-journey">
+      <div class="pressure-sticky">
+        <div class="container pressure-layout">
+          <!-- Left Narrative & Telemetry Column -->
+          <div class="pressure-info">
+            <div class="section-tag">
+              <span class="tag-index">01 / BIẾN ĐỔI PHA VẬT LÝ</span>
+              <span class="tag-line"></span>
+              <span>CUỘN ĐỂ NÉN ÁP SUẤT</span>
+            </div>
+
+            <h2 class="section-title">Hành trình <em>12 Gigapascal</em></h2>
+
+            <!-- Clickable Phase Progress Stepper -->
+            <div class="phase-stepper" role="tablist" aria-label="Bốn giai đoạn biến đổi vật chất">
+              <button type="button" class="phase-step active" data-phase-jump="0">
+                <span class="step-num">01</span>
+                <span class="step-label">Tinh Vân</span>
+              </button>
+              <button type="button" class="phase-step" data-phase-jump="1">
+                <span class="step-num">02</span>
+                <span class="step-label">Carbon Rèn</span>
+              </button>
+              <button type="button" class="phase-step" data-phase-jump="2">
+                <span class="step-num">03</span>
+                <span class="step-label">Graphene</span>
+              </button>
+              <button type="button" class="phase-step" data-phase-jump="3">
+                <span class="step-num">04</span>
+                <span class="step-label">Kim Cương</span>
+              </button>
+            </div>
+
+            <!-- Dynamic Phase Narrative Cards -->
+            <div class="phase-cards-stack">
+              <article class="phase-card active" data-phase-card="0">
+                <span class="phase-badge">PHA I · TỔNG HỢP HẠT NHÂN SAO ĐỎ</span>
+                <h3>Khởi nguyên từ phản ứng Ba-Alpha</h3>
+                <p>
+                  Trong lõi những ngôi sao khổng lồ ở 100 triệu độ Kelvin, ba hạt nhân Heli hợp nhất tạo thành <strong>Carbon-12</strong>. Mọi nguyên tử cấu thành chiếc KRONOS · C6 trên cổ tay bạn đều từng được rèn đúc giữa lòng tinh vân cổ đại.
+                </p>
+              </article>
+
+              <article class="phase-card" data-phase-card="1">
+                <span class="phase-badge">PHA II · NÉN ĐẲNG TĨNH 72 LỚP NTPT</span>
+                <h3>Vân cẩm thạch Carbon rèn độc bản</h3>
+                <p>
+                  Các dải sợi carbon siêu mảnh chỉ dày <strong>30 micron</strong> được xếp lệch góc 45° qua 72 lớp và nung nén dưới áp suất cao. Khi phay CNC 5 trục, bề mặt lộ ra họa tiết sóng cẩm thạch không bao giờ lặp lại trên chiếc thứ hai.
+                </p>
+              </article>
+
+              <article class="phase-card" data-phase-card="2">
+                <span class="phase-badge">PHA III · MẠNG LỤC GIÁC ĐƠN NGUYÊN TỬ</span>
+                <h3>Cầu đỡ cộng hưởng Graphene 2D</h3>
+                <p>
+                  Bóc tách xuống độ dày đúng một nguyên tử, các điện tử di chuyển như hạt không khối lượng. Hấp thụ chấn động tới <strong>5.000G</strong> mà vẫn giữ trọng lượng toàn bộ khung cầu máy dưới 4.2 gram.
+                </p>
+              </article>
+
+              <article class="phase-card" data-phase-card="3">
+                <span class="phase-badge">PHA IV · KẾT TINH TỨ DIỆN sp³</span>
+                <h3>Giáp tinh thể Kim cương Lonsdaleite</h3>
+                <p>
+                  Ở ngưỡng <strong>12.0 GPa</strong> và <strong>3.550°C</strong>, mọi liên kết chuyển sang mạng tứ diện kim cương cứng cáp tuyệt đối (10/10 Mohs), tán sắc ánh sáng thành dải cầu vồng lạnh sắc nét trên mặt kính vát cạnh.
+                </p>
+              </article>
+            </div>
+
+            <!-- Live Interpolated Telemetry Readouts -->
+            <div class="telemetry-grid">
+              <div class="telemetry-box">
+                <span class="telemetry-label">ÁP SUẤT BUỒNG NÉN</span>
+                <span class="telemetry-val" id="tele-pressure">0.00 <small>GPa</small></span>
+              </div>
+              <div class="telemetry-box">
+                <span class="telemetry-label">NHIỆT ĐỘ LÕI</span>
+                <span class="telemetry-val" id="tele-temp">120 <small>°C</small></span>
+              </div>
+              <div class="telemetry-box">
+                <span class="telemetry-label">LAI HÓA TỨ DIỆN sp³</span>
+                <span class="telemetry-val" id="tele-sp3">4 <small>%</small></span>
+              </div>
+              <div class="telemetry-box">
+                <span class="telemetry-label">ĐỘ CỨNG BỀ MẶT</span>
+                <span class="telemetry-val" id="tele-mohs">2.5 <small>Mohs</small></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Scroll-Scrubbed Phase Canvas -->
+          <div class="pressure-visual-card">
+            <canvas id="phase-scrub-canvas" aria-label="Mô phỏng biến đổi pha của Carbon theo cuộn trang"></canvas>
+            <div class="scrub-progress-pill">
+              <span>TIẾN TRÌNH NÉN</span>
+              <div class="scrub-mini-bar"><div class="scrub-mini-fill" id="scrub-mini-fill"></div></div>
+              <strong id="scrub-percent-label">00%</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 3: INTERACTIVE 2D GRAPHENE SPRING-PHYSICS LAB
+         ========================================================= -->
+    <section class="section graphene-section" id="graphene-lab">
+      <div class="container">
+        <div class="section-header-split reveal-up">
+          <div>
+            <div class="section-tag">
+              <span class="tag-index">02 / PHÒNG THÍ NGHIỆM VẬT LÝ ĐÀN HỒI</span>
+              <span class="tag-line"></span>
+              <span>MÔ PHỎNG HOOKE & VERLET THỜI GIAN THỰC</span>
+            </div>
+            <h2 class="section-title">Chạm và kéo căng <em>Màng Graphene</em></h2>
+          </div>
+          <p class="section-desc">
+            Mạng tinh thể lục giác bên dưới được tính toán vật lý lò xo thời gian thực trên từng liên kết đồng hóa trị. Hãy lướt chuột, bấm giữ để kéo giãn một nguyên tử, hoặc kích nổ xung chấn cộng hưởng.
+          </p>
+        </div>
+
+        <div class="graphene-workbench reveal-scale">
+          <!-- Workbench Top Controls -->
+          <div class="workbench-toolbar">
+            <div class="tool-modes" role="group" aria-label="Chế độ tương tác lưới nguyên tử">
+              <button type="button" class="mode-pill active" data-gmode="ripple" data-magnetic>
+                <span>🌊 Gợn Sóng Từ Trường</span>
+              </button>
+              <button type="button" class="mode-pill" data-gmode="pluck" data-magnetic>
+                <span>🤏 Kéo Giãn Liên Kết</span>
+              </button>
+              <button type="button" class="mode-pill" data-gmode="shockwave" data-magnetic>
+                <span>💥 Xung Chấn Nhiệt</span>
+              </button>
+            </div>
+
+            <div class="workbench-readouts">
+              <div class="mini-readout">
+                <span>NĂNG LƯỢNG BIẾN DẠNG</span>
+                <strong id="graphene-energy">0.00 eV</strong>
+              </div>
+              <button type="button" class="btn btn-ghost btn-xs" id="graphene-reset" data-magnetic data-cursor="ỔN ĐỊNH">
+                <span>Đặt lại tinh thể</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Lattice Canvas -->
+          <div class="graphene-canvas-shell" data-cursor="TƯƠNG TÁC">
+            <canvas id="graphene-canvas" aria-label="Màng lưới nguyên tử Graphene tương tác đàn hồi"></canvas>
+          </div>
+
+          <!-- Workbench Physics Sliders -->
+          <div class="workbench-sliders">
+            <label class="slider-control">
+              <span class="slider-top">
+                <span>Độ cứng liên kết σ (k)</span>
+                <strong id="val-stiffness">0.075</strong>
+              </span>
+              <input type="range" id="ctrl-stiffness" min="0.025" max="0.160" step="0.005" value="0.075" />
+            </label>
+
+            <label class="slider-control">
+              <span class="slider-top">
+                <span>Hệ số duy trì dao động</span>
+                <strong id="val-damping">0.935</strong>
+              </span>
+              <input type="range" id="ctrl-damping" min="0.860" max="0.975" step="0.005" value="0.935" />
+            </label>
+
+            <label class="slider-control">
+              <span class="slider-top">
+                <span>Bán kính trường lực</span>
+                <strong id="val-radius">135 px</strong>
+              </span>
+              <input type="range" id="ctrl-radius" min="65" max="230" step="5" value="135" />
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 4: 3D EXPLODED HOROLOGY LAYER STACK
+         ========================================================= -->
+    <section class="section exploded-section" id="exploded-calibre">
+      <div class="container">
+        <div class="section-header-split reveal-up">
+          <div>
+            <div class="section-tag">
+              <span class="tag-index">03 / KIẾN TRÚC CƠ KHÍ ĐA TẦNG</span>
+              <span class="tag-line"></span>
+              <span>KHÔNG GIAN 3D TÁCH LỚP</span>
+            </div>
+            <h2 class="section-title">Giải phẫu 5 tầng <em>Calibre C6</em></h2>
+          </div>
+          <p class="section-desc">
+            Kéo thanh trượt tách lớp hoặc chọn từng cụm chi tiết để soi rõ cách 294 linh kiện cơ khí siêu vi được khóa chặt giữa vỏ Carbon rèn và mặt kính tinh thể Kim cương.
+          </p>
+        </div>
+
+        <div class="exploded-grid">
+          <!-- Interactive 3D Isometric Exploded Stage -->
+          <div class="exploded-stage-card reveal-scale" id="exploded-stage-card" data-cursor="NGHIÊNG 3D">
+            <div class="exploded-controls-bar">
+              <label class="explode-range-wrap">
+                <span>ĐỘ TÁCH LỚP 3D</span>
+                <input type="range" id="explode-slider" min="0" max="100" value="68" />
+                <strong id="explode-val">68%</strong>
+              </label>
+              <button type="button" class="pill-control btn-xs" id="explode-toggle-btn" data-magnetic>
+                <span>Thu gọn / Bung mở</span>
+              </button>
+            </div>
+
+            <div class="exploded-viewport" id="exploded-viewport">
+              <div class="exploded-stack" id="exploded-stack">
+                <!-- Layer 1 (Top): CVD Diamond Crystal -->
+                <div class="iso-layer active-focus" data-layer="0" style="--layer-idx: 2;">
+                  <div class="iso-plate plate-crystal">
+                    <span class="iso-tag">LỚP 01 · KÍNH KIM CƯƠNG CVD</span>
+                    <svg viewBox="0 0 240 240" class="iso-svg">
+                      <polygon points="75,18 165,18 222,75 222,165 165,222 75,222 18,165 18,75" fill="rgba(124, 231, 225, 0.08)" stroke="#7CE7E1" stroke-width="2" />
+                      <polygon points="84,32 156,32 208,84 208,156 156,208 84,208 32,156 32,84" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1" stroke-dasharray="5 4" />
+                      <line x1="45" y1="95" x2="145" y2="35" stroke="rgba(255,255,255,0.45)" stroke-width="2" stroke-linecap="round" />
+                      <line x1="65" y1="185" x2="195" y2="85" stroke="rgba(124, 231, 225, 0.4)" stroke-width="1.5" stroke-linecap="round" />
+                      <circle cx="120" cy="120" r="68" fill="none" stroke="rgba(124,231,225,0.3)" stroke-width="1" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Layer 2: 72-Layer Forged Carbon Bezel -->
+                <div class="iso-layer" data-layer="1" style="--layer-idx: 1;">
+                  <div class="iso-plate plate-bezel">
+                    <span class="iso-tag">LỚP 02 · VÀNH CARBON NTPT</span>
+                    <svg viewBox="0 0 240 240" class="iso-svg">
+                      <polygon points="72,14 168,14 226,72 226,168 168,226 72,226 14,168 14,72" fill="rgba(24,24,28,0.88)" stroke="#E5994B" stroke-width="2" />
+                      <circle cx="120" cy="120" r="74" fill="#09090B" stroke="rgba(229,153,75,0.65)" stroke-width="2" />
+                      <!-- 8 Titanium Spline Screws -->
+                      <circle cx="80" cy="30" r="4.5" fill="#E5994B" /><circle cx="160" cy="30" r="4.5" fill="#E5994B" />
+                      <circle cx="210" cy="80" r="4.5" fill="#E5994B" /><circle cx="210" cy="160" r="4.5" fill="#E5994B" />
+                      <circle cx="160" cy="210" r="4.5" fill="#E5994B" /><circle cx="80" cy="210" r="4.5" fill="#E5994B" />
+                      <circle cx="30" cy="160" r="4.5" fill="#E5994B" /><circle cx="30" cy="80" r="4.5" fill="#E5994B" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Layer 3: Hexagonal Graphene Skeleton Bridges -->
+                <div class="iso-layer" data-layer="2" style="--layer-idx: 0;">
+                  <div class="iso-plate plate-bridges">
+                    <span class="iso-tag">LỚP 03 · CẦU ĐỠ GRAPHENE</span>
+                    <svg viewBox="0 0 240 240" class="iso-svg">
+                      <circle cx="120" cy="120" r="88" fill="rgba(18,18,22,0.82)" stroke="rgba(255,255,255,0.28)" stroke-width="1.6" />
+                      <g stroke="#E5994B" stroke-width="1.3" fill="none" opacity="0.88">
+                        <polygon points="120,48 152,66 152,102 120,120 88,102 88,66" />
+                        <polygon points="88,102 120,120 120,156 88,174 56,156 56,120" />
+                        <polygon points="152,102 184,120 184,156 152,174 120,156 120,120" />
+                        <line x1="120" y1="32" x2="120" y2="48" /><line x1="42" y1="164" x2="56" y2="156" /><line x1="198" y1="164" x2="184" y2="156" />
+                      </g>
+                      <circle cx="120" cy="120" r="6" fill="#7CE7E1" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Layer 4: Tri-Axial Spinning Tourbillon Cage -->
+                <div class="iso-layer" data-layer="3" style="--layer-idx: -1;">
+                  <div class="iso-plate plate-tourbillon">
+                    <span class="iso-tag">LỚP 04 · TOURBILLON 3 TRỤC</span>
+                    <svg viewBox="0 0 240 240" class="iso-svg">
+                      <circle cx="120" cy="120" r="84" fill="rgba(15,15,19,0.9)" stroke="rgba(124,231,225,0.45)" stroke-width="1.5" />
+                      <g class="spin-gear-slow">
+                        <circle cx="120" cy="120" r="58" fill="none" stroke="#E5994B" stroke-width="2.2" stroke-dasharray="8 6" />
+                        <line x1="62" y1="120" x2="178" y2="120" stroke="#E5994B" stroke-width="1.5" />
+                        <line x1="120" y1="62" x2="120" y2="178" stroke="#E5994B" stroke-width="1.5" />
+                      </g>
+                      <g class="spin-gear-fast">
+                        <polygon points="120,78 156,99 156,141 120,162 84,141 84,99" fill="none" stroke="#7CE7E1" stroke-width="2" />
+                        <circle cx="120" cy="120" r="22" fill="none" stroke="#F3B36B" stroke-width="1.8" />
+                      </g>
+                      <circle cx="120" cy="120" r="5" fill="#E5994B" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Layer 5 (Bottom): Ceramic Caseback -->
+                <div class="iso-layer" data-layer="4" style="--layer-idx: -2;">
+                  <div class="iso-plate plate-caseback">
+                    <span class="iso-tag">LỚP 05 · ĐÁY GỐM SIÊU DẪN</span>
+                    <svg viewBox="0 0 240 240" class="iso-svg">
+                      <polygon points="72,14 168,14 226,72 226,168 168,226 72,226 14,168 14,72" fill="#121216" stroke="rgba(255,255,255,0.32)" stroke-width="2" />
+                      <circle cx="120" cy="120" r="76" fill="none" stroke="rgba(229,153,75,0.35)" stroke-width="1.5" stroke-dasharray="3 4" />
+                      <circle cx="120" cy="120" r="52" fill="rgba(229,153,75,0.06)" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" />
+                      <text x="120" y="116" text-anchor="middle" fill="#F4F3EF" font-family="JetBrains Mono" font-size="11" letter-spacing="2">KRONOS · C6</text>
+                      <text x="120" y="133" text-anchor="middle" fill="#E5994B" font-family="JetBrains Mono" font-size="9" letter-spacing="1.5">NO. 06 / 60</text>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Layer Selector & Micron Specs -->
+          <div class="layer-specs-list reveal-up">
+            <button type="button" class="layer-spec-card active" data-layer-btn="0">
+              <div class="layer-card-head">
+                <span class="layer-num">01</span>
+                <h3>Mặt kính Tinh thể Kim cương CVD</h3>
+                <span class="layer-metric">1.80 mm · 10 Mohs</span>
+              </div>
+              <p>Nuôi cấy lắng đọng hơi hóa học plasma từ khí Methane tinh khiết, phủ 6 lớp chống phản xạ hai mặt cho độ truyền sáng 99.4%.</p>
+            </button>
+
+            <button type="button" class="layer-spec-card" data-layer-btn="1">
+              <div class="layer-card-head">
+                <span class="layer-num">02</span>
+                <h3>Vành Bezel Carbon Rèn 72 Lớp NTPT</h3>
+                <span class="layer-metric">9.40 g · ±2 μm</span>
+              </div>
+              <p>Phay bát giác nguyên khối cùng 8 vít spline bằng Titan cấp 5, kháng hoàn toàn ăn mòn từ trường, muối biển và biến thiên nhiệt độ.</p>
+            </button>
+
+            <button type="button" class="layer-spec-card" data-layer-btn="2">
+              <div class="layer-card-head">
+                <span class="layer-num">03</span>
+                <h3>Cầu Đỡ Lộ Cơ Skeleton Graphene</h3>
+                <span class="layer-metric">4.15 g · 5,000 G</span>
+              </div>
+              <p>Cấu trúc tổ ong lục giác mô phỏng liên kết đồng hóa trị giúp triệt tiêu rung chấn cơ học trước khi truyền tới trục bánh lắc.</p>
+            </button>
+
+            <button type="button" class="layer-spec-card" data-layer-btn="3">
+              <div class="layer-card-head">
+                <span class="layer-num">04</span>
+                <h3>Lồng Tourbillon Ba Trục Đồng Tâm</h3>
+                <span class="layer-metric">0.29 g · 60s / 24s / 8s</span>
+              </div>
+              <p>Xoay liên tục trên ba mặt phẳng không gian độc lập nhằm tự động bù trừ sai số trọng lực của Trái Đất ở mọi tư thế cổ tay.</p>
+            </button>
+
+            <button type="button" class="layer-spec-card" data-layer-btn="4">
+              <div class="layer-card-head">
+                <span class="layer-num">05</span>
+                <h3>Đáy Lưng Gốm Siêu Dẫn Khắc Laser</h3>
+                <span class="layer-metric">10 ATM · 60 Độc bản</span>
+              </div>
+              <p>Nung kết ở 1.650°C cho bề mặt mịn tựa lụa trên da, khắc laser vi điểm số thứ tự cá nhân hóa của từng chủ nhân sở hữu.</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 5: X-RAY LOUPE 10X & ANISOTROPIC BENTO SHOWCASE
+         ========================================================= -->
+    <section class="section xray-section" id="xray-loupe-section">
+      <div class="container">
+        <div class="section-header-split reveal-up">
+          <div>
+            <div class="section-tag">
+              <span class="tag-index">04 / THẤU KÍNH X-RAY THỢ ĐỒNG HỒ</span>
+              <span class="tag-line"></span>
+              <span>SOI XUYÊN THẤU BỘ MÁY</span>
+            </div>
+            <h2 class="section-title">Kính lúp quang học <em>X-Ray 10x</em></h2>
+          </div>
+          <p class="section-desc">
+            Di chuyển thấu kính trên mặt đồng hồ để nhìn xuyên qua lớp vỏ Carbon rèn, khám phá bản vẽ cắt lớp tia X phát quang của hệ thống bánh răng đồng trục và ổ chân kính.
+          </p>
+        </div>
+
+        <div class="bento-showcase">
+          <!-- Large X-Ray Loupe Interactive Card -->
+          <div class="bento-card bento-xray glare-card reveal-scale">
+            <div class="xray-toolbar">
+              <div class="hud-chip">
+                <span class="hud-dot cyan"></span>
+                <span>CHẾ ĐỘ QUÉT QUANG PHỔ CẮT LỚP</span>
+              </div>
+              <div class="xray-actions">
+                <label class="loupe-size-ctrl">
+                  <span>Cỡ kính</span>
+                  <input type="range" id="loupe-radius-slider" min="85" max="210" value="135" />
+                </label>
+                <button type="button" class="pill-control btn-xs" id="xray-full-toggle" data-magnetic>
+                  <span>Quét toàn mặt</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="xray-stage" id="xray-stage" data-cursor="SOI X-RAY">
+              <img src="assets/watch-exterior.jpg" alt="Đồng hồ KRONOS C6 vỏ Carbon rèn bát giác" class="xray-img xray-base" />
+              <div class="xray-reveal-layer" id="xray-reveal-layer">
+                <img src="assets/watch-xray.jpg" alt="Cấu trúc X-Ray bộ máy cơ khí bên trong KRONOS C6" class="xray-img xray-inner" />
+              </div>
+
+              <!-- Optical Reticle Ring -->
+              <div class="loupe-reticle" id="loupe-reticle" aria-hidden="true">
+                <span class="loupe-coords" id="loupe-coords">X: 50% · Y: 50%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column Bento Cards -->
+          <div class="bento-side-stack">
+            <article class="bento-card bento-prism glare-card reveal-up">
+              <div class="prism-media-wrap">
+                <img src="assets/carbon-prism.jpg" alt="Cận cảnh sợi Carbon rèn NTPT và tinh thể Kim cương khúc xạ ánh sáng" class="prism-img" />
+                <div class="prism-badge">TÁN SẮC 2.417 RI</div>
+              </div>
+              <div class="bento-copy">
+                <span class="bento-kicker">ĐỐI LẬP VẬT LIỆU</span>
+                <h3>Đen tuyệt đối & Khúc xạ tinh khiết</h3>
+                <p>Sự giao thoa thị giác giữa bề mặt Carbon rèn hấp thụ 98.7% ánh sáng và lăng kính Kim cương nhân tạo bẻ cong từng tia sáng thành quang phổ sắc lạnh.</p>
+              </div>
+            </article>
+
+            <article class="bento-card bento-metrics glare-card reveal-up">
+              <span class="bento-kicker">CHUẨN ĐO LƯỜNG VŨ TRỤ</span>
+              <h3>Chế tạo ở cấp độ Micron</h3>
+              <div class="micron-bars">
+                <div class="micron-row">
+                  <div class="micron-label"><span> Tỷ trọng / Thép 316L</span><strong>Nhẹ hơn 4.8×</strong></div>
+                  <div class="micron-track"><div class="micron-fill" style="--fill-w: 88%;"></div></div>
+                </div>
+                <div class="micron-row">
+                  <div class="micron-label"><span>Trữ cót Kép Đồng Trục</span><strong>120 Giờ (5 Ngày)</strong></div>
+                  <div class="micron-track"><div class="micron-fill cyan" style="--fill-w: 94%;"></div></div>
+                </div>
+                <div class="micron-row">
+                  <div class="micron-label"><span>Kháng Từ Trường Lõi</span><strong>15,000 Gauss</strong></div>
+                  <div class="micron-track"><div class="micron-fill" style="--fill-w: 96%;"></div></div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 6: LIVE HOROLOGICAL CHRONO-BENCH & OSCILLOSCOPE
+         ========================================================= -->
+    <section class="section chrono-section" id="chrono-bench">
+      <div class="container">
+        <div class="section-header-split reveal-up">
+          <div>
+            <div class="section-tag">
+              <span class="tag-index">05 / BÀN THỬ NGHIỆM TẦN SỐ CƠ HỌC</span>
+              <span class="tag-line"></span>
+              <span>ĐỒNG BỘ ÂM THANH & XUNG NHỊP</span>
+            </div>
+            <h2 class="section-title">Cộng hưởng <em>Bánh thoát & Dây tóc</em></h2>
+          </div>
+          <p class="section-desc">
+            Thử nghiệm trực tiếp các dải tần số dao động kinh điển của nghệ thuật chế tác đồng hồ đến ngưỡng siêu cao tần 10 Hz bằng dây tóc Silicon-Graphene. Bật <strong>Âm cơ khí</strong> trên thanh công cụ để nghe nhịp đập thực tế.
+          </p>
+        </div>
+
+        <div class="chrono-card glare-card reveal-scale">
+          <div class="chrono-header">
+            <div class="freq-selector" role="tablist" aria-label="Chọn tần số dao động bộ thoát">
+              <button type="button" class="freq-btn" data-vph="18000" data-hz="2.5" data-magnetic>
+                <strong>18,000 <small>vph</small></strong>
+                <span>2.5 Hz · Cổ điển</span>
+              </button>
+              <button type="button" class="freq-btn active" data-vph="28800" data-hz="4.0" data-magnetic>
+                <strong>28,800 <small>vph</small></strong>
+                <span>4.0 Hz · Chronometer</span>
+              </button>
+              <button type="button" class="freq-btn" data-vph="36000" data-hz="5.0" data-magnetic>
+                <strong>36,000 <small>vph</small></strong>
+                <span>5.0 Hz · Hi-Beat</span>
+              </button>
+              <button type="button" class="freq-btn" data-vph="72000" data-hz="10.0" data-magnetic>
+                <strong>72,000 <small>vph</small></strong>
+                <span>10.0 Hz · Siêu dẫn C6</span>
+              </button>
+            </div>
+
+            <div class="chrono-live-stats">
+              <div class="chrono-kpi">
+                <span>BIÊN ĐỘ LẮC</span>
+                <strong id="kpi-amp">312°</strong>
+              </div>
+              <div class="chrono-kpi">
+                <span>BEAT ERROR</span>
+                <strong id="kpi-beat">0.0 ms</strong>
+              </div>
+              <div class="chrono-kpi">
+                <span>SAI SỐ NGÀY</span>
+                <strong id="kpi-rate">+0.04 s/d</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="chrono-canvas-wrap">
+            <canvas id="chrono-canvas" aria-label="Mô phỏng bánh thoát đồng hồ và sóng dao động kế thời gian thực"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 7: BESPOKE CONFIGURATOR & 3D MONOLITH PASS
+         ========================================================= -->
+    <section class="section forge-section" id="bespoke-forge">
+      <div class="container">
+        <div class="section-header-split reveal-up">
+          <div>
+            <div class="section-tag">
+              <span class="tag-index">06 / XƯỞNG CHẾ TÁC CÁ NHÂN HÓA</span>
+              <span class="tag-line"></span>
+              <span>GIỚI HẠN 60 CHIẾC TOÀN CẦU</span>
+            </div>
+            <h2 class="section-title">Khắc dấu ấn lên <em>Thẻ Độc Bản C6</em></h2>
+          </div>
+          <p class="section-desc">
+            Mỗi chiếc KRONOS · C6 đi kèm một tấm chứng thư nguyên khối bằng sợi Carbon rèn tích hợp phôi Hologram quang phổ. Tùy chỉnh chất liệu, khắc tên của bạn và nghiêng thẻ trong không gian 3D.
+          </p>
+        </div>
+
+        <div class="forge-grid">
+          <!-- Left Configurator Form -->
+          <form class="forge-form glare-card reveal-up" id="forge-form" onsubmit="return false;">
+            <div class="form-group">
+              <label class="form-label">1. Chọn Phiên Bản Vật Liệu Vỏ</label>
+              <div class="edition-options">
+                <button type="button" class="edition-opt active" data-edition="obsidian" data-price="$48,000" data-edition-name="OBSIDIAN FORGE C6">
+                  <span class="swatch swatch-obsidian"></span>
+                  <span class="edition-meta">
+                    <strong>Obsidian Forge C6</strong>
+                    <small>Carbon Đen NTPT & Vàng Đồng · $48,000</small>
+                  </span>
+                </button>
+
+                <button type="button" class="edition-opt" data-edition="cryo" data-price="$54,000" data-edition-name="CRYO LONSDALEITE">
+                  <span class="swatch swatch-cryo"></span>
+                  <span class="edition-meta">
+                    <strong>Cryo Lonsdaleite</strong>
+                    <small>Tinh thể Băng Lam & Titan Khói · $54,000</small>
+                  </span>
+                </button>
+
+                <button type="button" class="edition-opt" data-edition="magma" data-price="$59,000" data-edition-name="MAGMA NANOTUBE">
+                  <span class="swatch swatch-magma"></span>
+                  <span class="edition-meta">
+                    <strong>Magma Nanotube</strong>
+                    <small>Sợi Hồng Ngoại Đỏ & Đen Bazan · $59,000</small>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-row-two">
+              <div class="form-group">
+                <label class="form-label" for="engrave-input">2. Chữ Khắc Laser Chủ Nhân</label>
+                <input
+                  type="text"
+                  id="engrave-input"
+                  class="text-input"
+                  maxlength="20"
+                  value="ANH KHOA · CARBON"
+                  placeholder="Nhập tên khắc laser..."
+                  autocomplete="off"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="serial-input">3. Số Thứ Tự (01–60)</label>
+                <input
+                  type="number"
+                  id="serial-input"
+                  class="text-input mono-input"
+                  min="1"
+                  max="60"
+                  value="6"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">4. Dây Đeo Khí Động Học</label>
+              <div class="strap-pills">
+                <button type="button" class="strap-pill active" data-strap="Fluoro-Carbon Đúc">Fluoro-Carbon Đúc</button>
+                <button type="button" class="strap-pill" data-strap="Dệt Kevlar-Graphene">Dệt Kevlar-Graphene</button>
+                <button type="button" class="strap-pill" data-strap="Khóa Gập Titan Cấp 5">Khóa Gập Titan Cấp 5</button>
+              </div>
+            </div>
+
+            <div class="forge-footer">
+              <div class="price-box">
+                <span>GIÁ TRỊ CHẾ TÁC DỰ KIẾN</span>
+                <strong id="config-price">$48,000</strong>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg" id="mint-pass-btn" data-magnetic data-cursor="KHẮC LASER">
+                <span class="btn-sheen" aria-hidden="true"></span>
+                <span>Khởi tạo Chứng thư C6</span>
+              </button>
+            </div>
+
+            <div class="mint-feedback" id="mint-feedback" role="status" aria-live="polite"></div>
+          </form>
+
+          <!-- Right 3D Interactive Holographic Forged-Carbon Collector Card -->
+          <div class="monolith-stage reveal-scale" id="monolith-stage" data-cursor="NGHIÊNG THẺ 3D">
+            <div class="monolith-card edition-obsidian" id="monolith-card">
+              <div class="monolith-weave" aria-hidden="true"></div>
+              <div class="monolith-holo" aria-hidden="true"></div>
+              <div class="monolith-border-glow" aria-hidden="true"></div>
+
+              <div class="monolith-top">
+                <div class="monolith-brand">
+                  <span class="mono-chip">C · 06 · 12.011</span>
+                  <strong>KRONOS ATELIER GENÈVE</strong>
+                </div>
+                <div class="monolith-serial" id="card-serial">NO. 06 / 60</div>
+              </div>
+
+              <div class="monolith-center">
+                <div class="monolith-emblem" aria-hidden="true">
+                  <svg viewBox="0 0 120 120" fill="none">
+                    <polygon points="60,8 105,34 105,86 60,112 15,86 15,34" stroke="currentColor" stroke-width="1.5" opacity="0.85" />
+                    <circle cx="60" cy="60" r="34" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3" class="card-orbit" />
+                    <polygon points="60,34 82,47 82,73 60,86 38,73 38,47" stroke="currentColor" stroke-width="1.4" />
+                    <circle cx="60" cy="60" r="5" fill="currentColor" />
+                  </svg>
+                </div>
+                <div class="monolith-edition-title" id="card-edition-title">OBSIDIAN FORGE C6</div>
+                <div class="monolith-strap-sub" id="card-strap-sub">DÂY FLUORO-CARBON ĐÚC · CALIBRE C6-T</div>
+              </div>
+
+              <div class="monolith-bottom">
+                <div class="engrave-block">
+                  <span class="engrave-caption">CHỦ SỞ HỮU ĐỘC BẢN (KHẮC LASER)</span>
+                  <div class="engrave-text" id="card-engrave-text">ANH KHOA · CARBON</div>
+                </div>
+                <div class="monolith-hash" id="card-hash">SHA-C6 · 8F06A9</div>
+              </div>
+            </div>
+            <canvas id="spark-canvas" class="spark-canvas" aria-hidden="true"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Architectural Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">KRONOS<strong>·C6</strong></span>
+        <p>Thử nghiệm tương tác đồ họa, vật lý đàn hồi thời gian thực & trình diễn siêu vật liệu Nguyên tố số 06 (Carbon).</p>
+      </div>
+      <div class="footer-meta">
+        <span>60 FPS CANVAS 3D · VERLET PHYSICS · WEB AUDIO ESCAPEMENT</span>
+        <a href="#allotrope-hero" class="back-top-link" data-magnetic>↑ Trở về đỉnh trang</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
